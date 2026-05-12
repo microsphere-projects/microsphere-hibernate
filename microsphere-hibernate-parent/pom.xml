@@ -109,7 +109,7 @@
         <profile>
             <id>hibernate-6.2</id>
             <properties>
-                <hibernate.version>6.2.52.Final</hibernate.version>
+                <hibernate.version>7.3.4.Final</hibernate.version>
             </properties>
         </profile>
 
