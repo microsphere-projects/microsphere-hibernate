@@ -47,6 +47,20 @@ pom.xml:
 | **0.2.x**    | Compatible with Spring Cloud 2022.0.x - 2025.0.x | 0.2.0              |
 | **0.1.x**    | Compatible with Spring Cloud Hoxton - 2021.0.x   | 0.1.0              |
 
+### Compatibility
+
+| **Branch 0.2.x**   | **Min Version** | **Max Version** |
+|--------------------|-----------------|-----------------|
+| **JDK**            | 17              | 25              |
+| **Spring Cloud**   | 2022.0.x        | 2025.0.x        |
+| **Hibernate Core** | 6.2.x           | 7.3.x           |
+
+| **Branch 0.1.x**   | **Min Version** | **Max Version** |
+|--------------------|-----------------|-----------------|
+| **JDK**            | 8               | 25              |
+| **Spring Cloud**   | Hoxton          | 2021.0.x        |
+| **Hibernate Core** | 5.0.x           | 5.6.x           |
+
 ## Building from Source
 
 You don't need to build from source unless you want to try out the latest code or contribute to the project.
