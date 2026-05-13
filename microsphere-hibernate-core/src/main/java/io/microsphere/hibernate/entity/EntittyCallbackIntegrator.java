@@ -63,7 +63,7 @@ import static org.hibernate.event.spi.EventType.REPLICATE;
 public class EntittyCallbackIntegrator implements Integrator {
 
     public void integrate(Metadata metadata, SessionFactoryImplementor sessionFactory, SessionFactoryServiceRegistry serviceRegistry) {
-        final EventListenerRegistry eventListenerRegistry = sessionFactory.getEventListenerRegistry();
+        EventListenerRegistry eventListenerRegistry = sessionFactory.getEventListenerRegistry();
 
         // Add DuplicationStrategy
         eventListenerRegistry.addDuplicationStrategy(new EntityCallbackListenerDuplicationStrategy());

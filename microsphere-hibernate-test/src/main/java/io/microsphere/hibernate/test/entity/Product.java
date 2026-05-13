@@ -69,7 +69,7 @@ public class Product {
     }
 
     @Override
-    public final boolean equals(Object o) {
+    public boolean equals(Object o) {
         if (!(o instanceof Product product)) return false;
 
         return Objects.equals(id, product.id)

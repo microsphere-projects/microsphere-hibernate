@@ -89,7 +89,7 @@ public class Order {
     }
 
     @Override
-    public final boolean equals(Object o) {
+    public boolean equals(Object o) {
         if (!(o instanceof Order order)) return false;
 
         return Objects.equals(id, order.id) && Objects.equals(orderNo, order.orderNo);
