@@ -31,6 +31,30 @@ import java.util.Set;
 import static jakarta.persistence.FetchType.LAZY;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
+/**
+ * JPA entity representing a product, mapped to the {@code t_product} table.
+ * Products participate in a many-to-many relationship with {@link Order}s via the
+ * {@code t_order_product} join table.
+ *
+ * <h3>Example Usage</h3>
+ * <pre>{@code
+ *   Product product = new Product();
+ *   product.setProductName("Laptop");
+ *
+ *   Order order = new Order();
+ *   order.setOrderNo("ORD001");
+ *   order.getProducts().add(product);
+ *
+ *   // Insert via StatelessSession
+ *   statelessSession.insert(product);
+ *   Product loaded = statelessSession.get(Product.class, product.getId());
+ *   assertEquals("Laptop", loaded.getProductName());
+ * }</pre>
+ *
+ * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
+ * @see Order
+ * @since 1.0.0
+ */
 @Entity
 @Table(name = "t_product")
 public class Product {
@@ -44,26 +68,56 @@ public class Product {
     @ManyToMany(mappedBy = "products", fetch = LAZY)
     private Set<Order> orders = new HashSet<>();
 
+    /**
+     * Returns the surrogate primary key of this product.
+     *
+     * @return the product id, or {@code null} if not yet persisted
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Sets the surrogate primary key of this product.
+     *
+     * @param id the product id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     * Returns the human-readable name of this product (e.g. {@code "Laptop"}).
+     *
+     * @return the product name
+     */
     public String getProductName() {
         return productName;
     }
 
+    /**
+     * Sets the human-readable name of this product.
+     *
+     * @param productName the product name
+     */
     public void setProductName(String productName) {
         this.productName = productName;
     }
 
+    /**
+     * Returns the set of {@link Order}s that include this product.
+     *
+     * @return the orders (never {@code null})
+     */
     public Set<Order> getOrders() {
         return orders;
     }
 
+    /**
+     * Replaces the set of {@link Order}s that include this product.
+     *
+     * @param orders the new set of orders
+     */
     public void setOrders(Set<Order> orders) {
         this.orders = orders;
     }

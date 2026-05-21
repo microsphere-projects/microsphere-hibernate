@@ -28,6 +28,20 @@ import static java.lang.Boolean.parseBoolean;
 /**
  * The interface to declare the property constants of Microsphere Hibernate
  *
+ * <h3>Example Usage</h3>
+ * <pre>{@code
+ *   // Enable Microsphere Hibernate via system property
+ *   System.setProperty(MICROSPHERE_HIBERNATE_ENABLED_PROPERTY_NAME, "true");
+ *
+ *   // Read the enabled flag
+ *   boolean enabled = Boolean.parseBoolean(
+ *       System.getProperty(MICROSPHERE_HIBERNATE_ENABLED_PROPERTY_NAME,
+ *                          DEFAULT_MICROSPHERE_HIBERNATE_ENABLED_PROPERTY_VALUE));
+ *
+ *   // Use the property name prefix to build custom property names
+ *   String customProperty = MICROSPHERE_HIBERNATE_PROPERTY_NAME_PREFIX + "myFeature.enabled";
+ * }</pre>
+ *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since 1.0.0
  */

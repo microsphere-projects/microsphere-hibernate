@@ -27,6 +27,29 @@ import org.junit.jupiter.api.BeforeEach;
 /**
  * Abstract Hibernate Test
  *
+ * <h3>Example Usage</h3>
+ * <pre>{@code
+ *   // Extend AbstractHibernateTest to write integration tests with a Hibernate SessionFactory
+ *   class MyHibernateTest extends AbstractHibernateTest {
+ *
+ *       @Override
+ *       protected Configuration buildConfiguration() {
+ *           return new Configuration()
+ *               .addAnnotatedClass(User.class)
+ *               .setProperty("hibernate.connection.url", "jdbc:h2:mem:testdb");
+ *       }
+ *
+ *       @Test
+ *       void testPersist() {
+ *           User user = new User();
+ *           user.setName("Alice");
+ *           Transaction tx = session.beginTransaction();
+ *           session.persist(user);
+ *           tx.commit();
+ *       }
+ *   }
+ * }</pre>
+ *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since 1.0.0
  */
@@ -59,14 +82,34 @@ abstract class AbstractHibernateTest {
         this.sessionFactory.close();
     }
 
+    /**
+     * Builds the Hibernate {@link Configuration} used to create the {@link SessionFactory}.
+     * Subclasses must implement this method to supply the appropriate configuration.
+     *
+     * @return the {@link Configuration} for the test
+     */
     protected abstract Configuration buildConfiguration();
 
+    /**
+     * Hook for subclasses to further customize the {@link Configuration} after it is built.
+     * The default implementation does nothing.
+     *
+     * @param configuration the {@link Configuration} to customize
+     */
     protected void customizeConfiguration(Configuration configuration) {
     }
 
+    /**
+     * Hook called after the {@link SessionFactory}, {@link Session}, and {@link StatelessSession}
+     * are created. Subclasses may override to perform additional setup before each test.
+     */
     protected void init() {
     }
 
+    /**
+     * Hook called before sessions are closed at the end of each test.
+     * Subclasses may override to perform additional teardown.
+     */
     protected void destroy() {
     }
 }

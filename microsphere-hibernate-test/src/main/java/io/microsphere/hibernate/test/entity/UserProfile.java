@@ -28,6 +28,29 @@ import java.util.Objects;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
+/**
+ * JPA entity representing a user's profile, mapped to the {@code t_user_profile} table.
+ * Holds additional personal information (e.g. ID card number) for a {@link User}.
+ *
+ * <h3>Example Usage</h3>
+ * <pre>{@code
+ *   User user = new User();
+ *   user.setName("Tom");
+ *
+ *   UserProfile profile = new UserProfile();
+ *   profile.setIdCard("ID123456");
+ *   profile.setUser(user);
+ *   user.setProfile(profile);
+ *
+ *   // Persisting the user will cascade to the profile
+ *   session.persist(user);
+ *   UserProfile loaded = session.get(UserProfile.class, profile.getId());
+ * }</pre>
+ *
+ * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
+ * @see User
+ * @since 1.0.0
+ */
 @Entity
 @Table(name = "t_user_profile")
 public class UserProfile {
@@ -42,26 +65,56 @@ public class UserProfile {
     @JoinColumn(name = "user_id")
     private User user;
 
+    /**
+     * Returns the surrogate primary key of this user profile.
+     *
+     * @return the id, or {@code null} if not yet persisted
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Sets the surrogate primary key of this user profile.
+     *
+     * @param id the id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     * Returns the ID card number stored in this profile.
+     *
+     * @return the ID card number
+     */
     public String getIdCard() {
         return idCard;
     }
 
+    /**
+     * Sets the ID card number for this profile.
+     *
+     * @param idCard the ID card number
+     */
     public void setIdCard(String idCard) {
         this.idCard = idCard;
     }
 
+    /**
+     * Returns the {@link User} that owns this profile.
+     *
+     * @return the owning user
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     * Sets the {@link User} that owns this profile.
+     *
+     * @param user the owning user
+     */
     public void setUser(User user) {
         this.user = user;
     }

@@ -54,6 +54,25 @@ import static org.hibernate.event.spi.EventType.REPLICATE;
 /**
  * Hibernate {@link Integrator} for {@link EntityCallback}
  *
+ * <h3>Example Usage</h3>
+ * <pre>{@code
+ *   // Register via META-INF/services/org.hibernate.integrator.spi.Integrator
+ *   // (file content: io.microsphere.hibernate.entity.EntittyCallbackIntegrator)
+ *
+ *   // Or register programmatically when building the SessionFactory:
+ *   Configuration configuration = new Configuration()
+ *       .addAnnotatedClass(User.class);
+ *   SessionFactory sessionFactory = configuration
+ *       .buildSessionFactory(
+ *           new StandardServiceRegistryBuilder()
+ *               .applySettings(configuration.getProperties())
+ *               .build()
+ *       );
+ *
+ *   // Once active, all EntityCallback implementations loaded via ServiceLoader
+ *   // are notified for Hibernate events (load, persist, delete, merge, etc.)
+ * }</pre>
+ *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @see Integrator
  * @see DuplicationStrategy
@@ -62,6 +81,14 @@ import static org.hibernate.event.spi.EventType.REPLICATE;
  */
 public class EntittyCallbackIntegrator implements Integrator {
 
+    /**
+     * Registers the {@link EntityCallbackListener} for all supported Hibernate event types
+     * on the given {@link SessionFactoryImplementor}.
+     *
+     * @param metadata           the Hibernate metadata
+     * @param sessionFactory     the session factory being built
+     * @param serviceRegistry    the session factory service registry
+     */
     public void integrate(Metadata metadata, SessionFactoryImplementor sessionFactory, SessionFactoryServiceRegistry serviceRegistry) {
         EventListenerRegistry eventListenerRegistry = sessionFactory.getEventListenerRegistry();
 
@@ -120,6 +147,13 @@ public class EntittyCallbackIntegrator implements Integrator {
         integrate(metadata, sessionFactory, (SessionFactoryServiceRegistry) sessionFactory.getServiceRegistry());
     }
 
+    /**
+     * Removes previously registered {@link EntityCallbackListener} listeners from the session factory.
+     * This implementation is a no-op; all cleanup is handled by the session factory shutdown.
+     *
+     * @param sessionFactory  the session factory being closed
+     * @param serviceRegistry the session factory service registry
+     */
     @Override
     public void disintegrate(SessionFactoryImplementor sessionFactory, SessionFactoryServiceRegistry serviceRegistry) {
     }

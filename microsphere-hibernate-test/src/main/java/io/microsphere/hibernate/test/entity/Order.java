@@ -34,6 +34,29 @@ import static jakarta.persistence.CascadeType.MERGE;
 import static jakarta.persistence.CascadeType.PERSIST;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
+/**
+ * JPA entity representing a customer order, mapped to the {@code t_order} table.
+ * An order belongs to a {@link User} and may contain multiple {@link Product}s via a
+ * many-to-many join table ({@code t_order_product}).
+ *
+ * <h3>Example Usage</h3>
+ * <pre>{@code
+ *   Order order = new Order();
+ *   order.setOrderNo("ORD001");
+ *
+ *   Product product = new Product();
+ *   product.setProductName("Laptop");
+ *   order.getProducts().add(product);
+ *
+ *   user.addOrder(order);
+ *   session.persist(user); // cascades to order and products
+ * }</pre>
+ *
+ * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
+ * @see User
+ * @see Product
+ * @since 1.0.0
+ */
 @Entity
 @Table(name = "t_order")
 public class Order {
@@ -56,34 +79,74 @@ public class Order {
     )
     private Set<Product> products = new HashSet<>();
 
+    /**
+     * Returns the surrogate primary key of this order.
+     *
+     * @return the order id, or {@code null} if not yet persisted
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Sets the surrogate primary key of this order.
+     *
+     * @param id the order id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     * Returns the business order number (e.g. {@code "ORD001"}).
+     *
+     * @return the order number
+     */
     public String getOrderNo() {
         return orderNo;
     }
 
+    /**
+     * Sets the business order number.
+     *
+     * @param orderNo the order number
+     */
     public void setOrderNo(String orderNo) {
         this.orderNo = orderNo;
     }
 
+    /**
+     * Returns the {@link User} that placed this order.
+     *
+     * @return the owning user
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     * Sets the {@link User} that placed this order.
+     *
+     * @param user the owning user
+     */
     public void setUser(User user) {
         this.user = user;
     }
 
+    /**
+     * Returns the set of {@link Product}s associated with this order.
+     *
+     * @return the products (never {@code null})
+     */
     public Set<Product> getProducts() {
         return products;
     }
 
+    /**
+     * Replaces the set of {@link Product}s for this order.
+     *
+     * @param products the new set of products
+     */
     public void setProducts(Set<Product> products) {
         this.products = products;
     }

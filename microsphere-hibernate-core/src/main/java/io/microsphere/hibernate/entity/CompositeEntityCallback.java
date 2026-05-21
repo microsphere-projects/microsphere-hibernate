@@ -29,6 +29,19 @@ import static io.microsphere.collection.ListUtils.forEach;
 /**
  * Composite {@link EntityCallback}
  *
+ * <h3>Example Usage</h3>
+ * <pre>{@code
+ *   EntityCallback loggingCallback = new LoggingEntityCallback();
+ *   EntityCallback auditCallback = new AuditEntityCallback();
+ *   List<EntityCallback> callbacks = Arrays.asList(loggingCallback, auditCallback);
+ *   CompositeEntityCallback composite = new CompositeEntityCallback(callbacks);
+ *
+ *   // The composite will invoke both callbacks in order
+ *   composite.onPersist(myEntity, "MyEntity");
+ *   composite.onLoad(entityId, "MyEntity", myEntity, LockMode.NONE,
+ *                    false, null, null, LoadType.GET);
+ * }</pre>
+ *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @see EntityCallback
  * @since 1.0.0
@@ -37,6 +50,12 @@ public class CompositeEntityCallback implements EntityCallback {
 
     private final List<EntityCallback> callbacks;
 
+    /**
+     * Creates a new {@link CompositeEntityCallback} backed by the given list of callbacks.
+     * Each callback will be invoked in the order it appears in the list.
+     *
+     * @param callbacks the ordered list of {@link EntityCallback} instances to delegate to
+     */
     public CompositeEntityCallback(List<EntityCallback> callbacks) {
         this.callbacks = callbacks;
     }

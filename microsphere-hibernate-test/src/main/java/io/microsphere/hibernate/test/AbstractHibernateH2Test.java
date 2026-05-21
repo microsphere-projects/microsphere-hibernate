@@ -41,6 +41,30 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 /**
  * Abstract Hibernate Test for H2 Database
  *
+ * <h3>Example Usage</h3>
+ * <pre>{@code
+ *   // Extend to write Hibernate integration tests backed by an in-memory H2 database
+ *   class MyEntityTest extends AbstractHibernateH2Test {
+ *
+ *       @Test
+ *       void testPersistAndGet() {
+ *           doInTransaction(() -> {
+ *               session.persist(user);
+ *               User found = session.get(User.class, user.getId());
+ *               assertEquals(user, found);
+ *           });
+ *       }
+ *
+ *       // Override createUser() to provide a custom User graph for tests
+ *       @Override
+ *       protected User createUser() {
+ *           User user = new User();
+ *           user.setName("Alice");
+ *           return user;
+ *       }
+ *   }
+ * }</pre>
+ *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @see AbstractHibernateTest
  * @since 1.0.0
@@ -55,6 +79,12 @@ public abstract class AbstractHibernateH2Test extends AbstractHibernateTest {
         user = createUser();
     }
 
+    /**
+     * Creates a default {@link User} entity graph (with {@link UserProfile}, {@link Order}, and
+     * {@link Product}) used as test fixture data. Override to supply a custom graph.
+     *
+     * @return a new {@link User} instance with associated entities
+     */
     protected User createUser() {
         User user = new User();
         user.setName("Tom");
@@ -93,6 +123,11 @@ public abstract class AbstractHibernateH2Test extends AbstractHibernateTest {
         return configuration;
     }
 
+    /**
+     * Executes the given action, asserting that it completes without throwing any exception.
+     *
+     * @param action the action to run
+     */
     protected void doInAction(Runnable action) {
         assertDoesNotThrow(action::run);
     }

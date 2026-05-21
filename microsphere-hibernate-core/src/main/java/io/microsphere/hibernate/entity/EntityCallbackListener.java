@@ -88,6 +88,19 @@ import static java.util.ServiceLoader.load;
 /**
  * The listener class for {@link EntityCallback}
  *
+ * <h3>Example Usage</h3>
+ * <pre>{@code
+ *   // Default constructor loads EntityCallback implementations via ServiceLoader
+ *   EntityCallbackListener listener = new EntityCallbackListener();
+ *
+ *   // Or supply callbacks directly (useful in tests)
+ *   List<EntityCallback> callbacks = Arrays.asList(new LoggingEntityCallback());
+ *   EntityCallbackListener listener = new EntityCallbackListener(callbacks);
+ *
+ *   // The listener is registered by {@link EntittyCallbackIntegrator} on SessionFactory startup;
+ *   // it translates Hibernate events into EntityCallback invocations automatically.
+ * }</pre>
+ *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @see LoadEventListener
  * @see PersistEventListener
@@ -132,10 +145,20 @@ class EntityCallbackListener implements LoadEventListener, PersistEventListener,
 
     private final EntityCallback callback;
 
+    /**
+     * Creates a new {@link EntityCallbackListener} that loads {@link EntityCallback} implementations
+     * from the classpath using {@link java.util.ServiceLoader}.
+     */
     EntityCallbackListener() {
         this(load(EntityCallback.class));
     }
 
+    /**
+     * Creates a new {@link EntityCallbackListener} backed by the given {@link EntityCallback} instances.
+     * Callbacks are sorted by priority using {@link io.microsphere.lang.Prioritized#COMPARATOR}.
+     *
+     * @param callbacks the iterable of {@link EntityCallback} instances to use
+     */
     EntityCallbackListener(Iterable<EntityCallback> callbacks) {
         List<EntityCallback> entityCallbacks = newLinkedList(callbacks);
         entityCallbacks.sort(COMPARATOR);
@@ -362,6 +385,12 @@ class EntityCallbackListener implements LoadEventListener, PersistEventListener,
         this.callback.onPostUpdateCollection(collection, collection.getKey());
     }
 
+    /**
+     * Extracts the {@link LockMode} from the given {@link LockOptions}.
+     *
+     * @param lockOptions the lock options to extract the lock mode from
+     * @return the {@link LockMode} from the given {@link LockOptions}
+     */
     protected LockMode getLockMode(LockOptions lockOptions) {
         return lockOptions.getLockMode();
     }

@@ -58,6 +58,32 @@ import java.util.ServiceLoader;
  * The lifecycle callback interface for entity.
  * The implementation class will be loaded by {@link ServiceLoader Java Services Loader}.
  *
+ * <h3>Example Usage</h3>
+ * <pre>{@code
+ *   // Implement a custom EntityCallback registered via
+ *   // META-INF/services/io.microsphere.hibernate.entity.EntityCallback
+ *   public class LoggingEntityCallback implements EntityCallback {
+ *
+ *       @Override
+ *       public void onPersist(Object entity, String entityName) {
+ *           System.out.println("Persisting: " + entityName + " -> " + entity);
+ *       }
+ *
+ *       @Override
+ *       public void onLoad(Object id, String entityClassName, Object entity,
+ *                          LockMode lockMode, boolean isAssociationFetch,
+ *                          Object result, Boolean readOnly, LoadType loadType) {
+ *           System.out.println("Loading: " + entityClassName + " id=" + id);
+ *       }
+ *
+ *       @Override
+ *       public void onPreDelete(Object entity, Object id, Object[] state,
+ *                               String[] propertyNames, Type[] types) {
+ *           System.out.println("About to delete: " + entity);
+ *       }
+ *   }
+ * }</pre>
+ *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @see LoadEventListener
  * @see PersistEventListener

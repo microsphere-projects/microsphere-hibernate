@@ -26,12 +26,32 @@ import static org.hibernate.event.service.spi.DuplicationStrategy.Action.KEEP_OR
 /**
  * {@link DuplicationStrategy} class for {@link EntityCallbackListener}
  *
+ * <h3>Example Usage</h3>
+ * <pre>{@code
+ *   // Used internally by EntittyCallbackIntegrator to prevent duplicate listener registration
+ *   EntityCallbackListenerDuplicationStrategy strategy = new EntityCallbackListenerDuplicationStrategy();
+ *
+ *   EntityCallbackListener listener1 = new EntityCallbackListener();
+ *   EntityCallbackListener listener2 = new EntityCallbackListener();
+ *   boolean match = strategy.areMatch(listener1, listener2); // true — same class
+ *
+ *   DuplicationStrategy.Action action = strategy.getAction(); // KEEP_ORIGINAL
+ * }</pre>
+ *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @see EntityCallbackListener
  * @since 1.0.0
  */
 class EntityCallbackListenerDuplicationStrategy implements DuplicationStrategy {
 
+    /**
+     * Returns {@code true} if both {@code listener} and {@code original} are instances of
+     * {@link EntityCallbackListener}, preventing duplicate registrations.
+     *
+     * @param listener the candidate listener
+     * @param original the already-registered listener
+     * @return {@code true} if both are instances of {@link EntityCallbackListener}
+     */
     @Override
     public boolean areMatch(Object listener, Object original) {
         Class<?> listenerClass = listener.getClass();
@@ -39,6 +59,12 @@ class EntityCallbackListenerDuplicationStrategy implements DuplicationStrategy {
                 && EntityCallbackListener.class.equals(listenerClass);
     }
 
+    /**
+     * Returns {@link org.hibernate.event.service.spi.DuplicationStrategy.Action#KEEP_ORIGINAL},
+     * meaning the first registered {@link EntityCallbackListener} is retained when a duplicate is detected.
+     *
+     * @return {@link org.hibernate.event.service.spi.DuplicationStrategy.Action#KEEP_ORIGINAL}
+     */
     @Override
     public Action getAction() {
         return KEEP_ORIGINAL;
