@@ -39,7 +39,6 @@ import org.hibernate.event.spi.PostDeleteEventListener;
 import org.hibernate.event.spi.PostInsertEventListener;
 import org.hibernate.event.spi.PostLoadEventListener;
 import org.hibernate.event.spi.PostUpdateEventListener;
-import org.hibernate.event.spi.PostUpsertEventListener;
 import org.hibernate.event.spi.PreCollectionRecreateEventListener;
 import org.hibernate.event.spi.PreCollectionRemoveEventListener;
 import org.hibernate.event.spi.PreCollectionUpdateEventListener;
@@ -47,7 +46,6 @@ import org.hibernate.event.spi.PreDeleteEventListener;
 import org.hibernate.event.spi.PreInsertEventListener;
 import org.hibernate.event.spi.PreLoadEventListener;
 import org.hibernate.event.spi.PreUpdateEventListener;
-import org.hibernate.event.spi.PreUpsertEventListener;
 import org.hibernate.event.spi.RefreshEventListener;
 import org.hibernate.event.spi.ReplicateEventListener;
 import org.hibernate.type.Type;
@@ -102,8 +100,6 @@ import java.util.ServiceLoader;
  * @see PostUpdateEventListener
  * @see PreInsertEventListener
  * @see PostInsertEventListener
- * @see PreUpsertEventListener
- * @see PostUpsertEventListener
  * @see PreCollectionRecreateEventListener
  * @see PostCollectionRecreateEventListener
  * @see PreCollectionRemoveEventListener
@@ -356,38 +352,6 @@ public interface EntityCallback {
      * @see PostUpdateEventListener
      */
     default void onPostUpdate(Object entity, Object id, Object[] state, String[] propertyNames, Type[] propertyTypes) {
-    }
-
-    /**
-     * Called before a record is upserted by a {@link StatelessSession}.
-     * <p>
-     * It is not recommended that the interceptor modify the {@code state}.
-     *
-     * @param entity        The entity instance being deleted
-     * @param id            The identifier of the entity
-     * @param state         The entity state
-     * @param propertyNames The names of the entity properties
-     * @param propertyTypes The types of the entity properties
-     * @see StatelessSession#upsert(String, Object)
-     * @see PreUpsertEventListener
-     */
-    default void onPreUpsert(Object entity, Object id, Object[] state, String[] propertyNames, Type[] propertyTypes) {
-    }
-
-    /**
-     * Called after a record is upserted by a {@link StatelessSession}.
-     * <p>
-     * It is not recommended that the interceptor modify the {@code state}.
-     *
-     * @param entity        The entity instance being deleted
-     * @param id            The identifier of the entity
-     * @param state         The entity state
-     * @param propertyNames The names of the entity properties
-     * @param propertyTypes The types of the entity properties
-     * @see StatelessSession#upsert(String, Object)
-     * @see PostUpsertEventListener
-     */
-    default void onPostUpsert(Object entity, Object id, Object[] state, String[] propertyNames, Type[] propertyTypes) {
     }
 
     /**

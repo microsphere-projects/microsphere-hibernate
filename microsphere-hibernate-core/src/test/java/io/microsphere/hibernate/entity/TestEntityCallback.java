@@ -151,20 +151,6 @@ public class TestEntityCallback implements EntityCallback {
     }
 
     @Override
-    public void onPreUpsert(Object entity, Object id, Object[] state, String[] propertyNames, Type[] propertyTypes) {
-        logger.trace("onPreUpsert - entity : {}, id : {}, state : {}, propertyNames : {}, propertyTypes : {}",
-                entity, id, state, propertyNames, propertyTypes);
-        EntityCallback.super.onPreUpsert(entity, id, state, propertyNames, propertyTypes);
-    }
-
-    @Override
-    public void onPostUpsert(Object entity, Object id, Object[] state, String[] propertyNames, Type[] propertyTypes) {
-        logger.trace("onPostUpsert - entity : {}, id : {}, state : {}, propertyNames : {}, propertyTypes : {}",
-                entity, id, state, propertyNames, propertyTypes);
-        EntityCallback.super.onPostUpsert(entity, id, state, propertyNames, propertyTypes);
-    }
-
-    @Override
     public void onPreRecreateCollection(Object collection, Object key) {
         logger.trace("onPreRecreateCollection - collection : {}, key : {}", collection, key);
         EntityCallback.super.onPreRecreateCollection(collection, key);

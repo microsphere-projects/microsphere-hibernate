@@ -39,7 +39,6 @@ import static org.hibernate.event.spi.EventType.POST_DELETE;
 import static org.hibernate.event.spi.EventType.POST_INSERT;
 import static org.hibernate.event.spi.EventType.POST_LOAD;
 import static org.hibernate.event.spi.EventType.POST_UPDATE;
-import static org.hibernate.event.spi.EventType.POST_UPSERT;
 import static org.hibernate.event.spi.EventType.PRE_COLLECTION_RECREATE;
 import static org.hibernate.event.spi.EventType.PRE_COLLECTION_REMOVE;
 import static org.hibernate.event.spi.EventType.PRE_COLLECTION_UPDATE;
@@ -47,7 +46,6 @@ import static org.hibernate.event.spi.EventType.PRE_DELETE;
 import static org.hibernate.event.spi.EventType.PRE_INSERT;
 import static org.hibernate.event.spi.EventType.PRE_LOAD;
 import static org.hibernate.event.spi.EventType.PRE_UPDATE;
-import static org.hibernate.event.spi.EventType.PRE_UPSERT;
 import static org.hibernate.event.spi.EventType.REFRESH;
 import static org.hibernate.event.spi.EventType.REPLICATE;
 
@@ -85,9 +83,9 @@ public class EntittyCallbackIntegrator implements Integrator {
      * Registers the {@link EntityCallbackListener} for all supported Hibernate event types
      * on the given {@link SessionFactoryImplementor}.
      *
-     * @param metadata           the Hibernate metadata
-     * @param sessionFactory     the session factory being built
-     * @param serviceRegistry    the session factory service registry
+     * @param metadata        the Hibernate metadata
+     * @param sessionFactory  the session factory being built
+     * @param serviceRegistry the session factory service registry
      */
     public void integrate(Metadata metadata, SessionFactoryImplementor sessionFactory, SessionFactoryServiceRegistry serviceRegistry) {
         EventListenerRegistry eventListenerRegistry = serviceRegistry.getService(EventListenerRegistry.class);
@@ -127,9 +125,6 @@ public class EntittyCallbackIntegrator implements Integrator {
 
         eventListenerRegistry.appendListeners(PRE_INSERT, listener);
         eventListenerRegistry.appendListeners(POST_INSERT, listener);
-
-        eventListenerRegistry.appendListeners(PRE_UPSERT, listener);
-        eventListenerRegistry.appendListeners(POST_UPSERT, listener);
 
         eventListenerRegistry.appendListeners(PRE_COLLECTION_RECREATE, listener);
         eventListenerRegistry.appendListeners(POST_COLLECTION_RECREATE, listener);

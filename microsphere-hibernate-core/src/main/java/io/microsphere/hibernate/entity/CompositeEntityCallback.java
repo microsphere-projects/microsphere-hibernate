@@ -174,14 +174,4 @@ public class CompositeEntityCallback implements EntityCallback {
     public void onPostUpdate(Object entity, Object id, Object[] state, String[] propertyNames, Type[] propertyTypes) {
         forEach(this.callbacks, callback -> callback.onPostUpdate(entity, id, state, propertyNames, propertyTypes));
     }
-
-    @Override
-    public void onPreUpsert(Object entity, Object id, Object[] state, String[] propertyNames, Type[] propertyTypes) {
-        forEach(this.callbacks, callback -> callback.onPreUpsert(entity, id, state, propertyNames, propertyTypes));
-    }
-
-    @Override
-    public void onPostUpsert(Object entity, Object id, Object[] state, String[] propertyNames, Type[] propertyTypes) {
-        forEach(this.callbacks, callback -> callback.onPostUpsert(entity, id, state, propertyNames, propertyTypes));
-    }
 }

@@ -30,7 +30,6 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.Set;
 
-import static jakarta.persistence.CacheStoreMode.REFRESH;
 import static org.hibernate.LockMode.READ;
 import static org.hibernate.ReplicationMode.LATEST_VERSION;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -258,7 +257,7 @@ public abstract class AbstractHibernateH2Test extends AbstractHibernateTest {
             doInTransaction(() -> {
                 session.persist(user);
                 // refresh
-                session.refresh(user, REFRESH);
+                session.refresh(user);
             });
         }
 
@@ -322,16 +321,6 @@ public abstract class AbstractHibernateH2Test extends AbstractHibernateTest {
             Long userId = (Long) statelessSession.insert(user);
             user.setName("Updated User");
             statelessSession.update(user);
-            User user1 = statelessSession.get(User.class, userId);
-            assertEquals(user, user1);
-        }
-
-        @Test
-        @DisplayName("Test : insert & upsert")
-        void testInsertAndUpsert() {
-            Long userId = (Long) statelessSession.insert(user);
-            user.setName("Upsert User");
-            statelessSession.upsert(user);
             User user1 = statelessSession.get(User.class, userId);
             assertEquals(user, user1);
         }

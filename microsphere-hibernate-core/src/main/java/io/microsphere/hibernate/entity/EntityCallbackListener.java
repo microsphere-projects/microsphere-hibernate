@@ -54,8 +54,6 @@ import org.hibernate.event.spi.PostLoadEvent;
 import org.hibernate.event.spi.PostLoadEventListener;
 import org.hibernate.event.spi.PostUpdateEvent;
 import org.hibernate.event.spi.PostUpdateEventListener;
-import org.hibernate.event.spi.PostUpsertEvent;
-import org.hibernate.event.spi.PostUpsertEventListener;
 import org.hibernate.event.spi.PreCollectionRecreateEvent;
 import org.hibernate.event.spi.PreCollectionRecreateEventListener;
 import org.hibernate.event.spi.PreCollectionRemoveEvent;
@@ -70,8 +68,6 @@ import org.hibernate.event.spi.PreLoadEvent;
 import org.hibernate.event.spi.PreLoadEventListener;
 import org.hibernate.event.spi.PreUpdateEvent;
 import org.hibernate.event.spi.PreUpdateEventListener;
-import org.hibernate.event.spi.PreUpsertEvent;
-import org.hibernate.event.spi.PreUpsertEventListener;
 import org.hibernate.event.spi.RefreshContext;
 import org.hibernate.event.spi.RefreshEvent;
 import org.hibernate.event.spi.RefreshEventListener;
@@ -119,8 +115,6 @@ import static java.util.ServiceLoader.load;
  * @see PostUpdateEventListener
  * @see PreInsertEventListener
  * @see PostInsertEventListener
- * @see PreUpsertEventListener
- * @see PostUpsertEventListener
  * @see PreCollectionRecreateEventListener
  * @see PostCollectionRecreateEventListener
  * @see PreCollectionRemoveEventListener
@@ -138,7 +132,6 @@ class EntityCallbackListener implements LoadEventListener, PersistEventListener,
         PreDeleteEventListener, PostDeleteEventListener,
         PreUpdateEventListener, PostUpdateEventListener,
         PreInsertEventListener, PostInsertEventListener,
-        PreUpsertEventListener, PostUpsertEventListener,
         PreCollectionRecreateEventListener, PostCollectionRecreateEventListener,
         PreCollectionRemoveEventListener, PostCollectionRemoveEventListener,
         PreCollectionUpdateEventListener, PostCollectionUpdateEventListener {
@@ -329,27 +322,6 @@ class EntityCallbackListener implements LoadEventListener, PersistEventListener,
     }
 
     @Override
-    public boolean onPreUpsert(PreUpsertEvent event) {
-        EntityPersister persister = event.getPersister();
-        this.callback.onPreUpsert(event.getEntity(),
-                event.getId(),
-                event.getState(),
-                persister.getPropertyNames(),
-                persister.getPropertyTypes());
-        return false;
-    }
-
-    @Override
-    public void onPostUpsert(PostUpsertEvent event) {
-        EntityPersister persister = event.getPersister();
-        this.callback.onPostUpsert(event.getEntity(),
-                event.getId(),
-                event.getState(),
-                persister.getPropertyNames(),
-                persister.getPropertyTypes());
-    }
-
-    @Override
     public void onPreRecreateCollection(PreCollectionRecreateEvent event) {
         PersistentCollection<?> collection = event.getCollection();
         this.callback.onPreRecreateCollection(collection, collection.getKey());
@@ -385,6 +357,11 @@ class EntityCallbackListener implements LoadEventListener, PersistEventListener,
         this.callback.onPostUpdateCollection(collection, collection.getKey());
     }
 
+    @Override
+    public boolean requiresPostCommitHandling(EntityPersister persister) {
+        return false;
+    }
+
     /**
      * Extracts the {@link LockMode} from the given {@link LockOptions}.
      *
@@ -394,4 +371,5 @@ class EntityCallbackListener implements LoadEventListener, PersistEventListener,
     protected LockMode getLockMode(LockOptions lockOptions) {
         return lockOptions.getLockMode();
     }
+
 }
