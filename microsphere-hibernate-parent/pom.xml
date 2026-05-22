@@ -81,7 +81,7 @@
         <profile>
             <id>hibernate-6.6</id>
             <properties>
-                <hibernate.version>6.6.x</hibernate.version>
+                <hibernate.version>6.6.50.Final</hibernate.version>
             </properties>
         </profile>
 

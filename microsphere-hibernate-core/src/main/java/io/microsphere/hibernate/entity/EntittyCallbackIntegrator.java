@@ -90,7 +90,7 @@ public class EntittyCallbackIntegrator implements Integrator {
      * @param serviceRegistry    the session factory service registry
      */
     public void integrate(Metadata metadata, SessionFactoryImplementor sessionFactory, SessionFactoryServiceRegistry serviceRegistry) {
-        EventListenerRegistry eventListenerRegistry = sessionFactory.getEventListenerRegistry();
+        EventListenerRegistry eventListenerRegistry = serviceRegistry.getService(EventListenerRegistry.class);
 
         // Add DuplicationStrategy
         eventListenerRegistry.addDuplicationStrategy(new EntityCallbackListenerDuplicationStrategy());
