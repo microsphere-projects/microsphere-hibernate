@@ -17,7 +17,6 @@
 
 package io.microsphere.hibernate.constants;
 
-
 import org.junit.jupiter.api.Test;
 
 import static io.microsphere.hibernate.constants.PropertyConstants.DEFAULT_MICROSPHERE_HIBERNATE_ENABLED;

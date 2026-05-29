@@ -17,7 +17,6 @@
 
 package io.microsphere.hibernate.entity;
 
-
 import org.hibernate.event.internal.DefaultLoadEventListener;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

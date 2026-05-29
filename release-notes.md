@@ -64,4 +64,20 @@
 
 ---
 
-**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.2.0...0.2.1
+**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.2.0...0.2.1## v0.2.2
+
+# Release Notes - Version 0.2.2
+
+## Test Improvements
+- **Unit Test Additions**: Introduced `EntityCallbackListener` unit tests for improved test coverage. ([ba3ebbc](https://example.com))
+
+## Other Changes
+- **Callback Refactor**: Removed upsert callbacks and `DelegatingInterceptor` for cleaner code. ([66c64ef](https://example.com))
+- **Hibernate Updates**: Activated Hibernate profile and pinned the Hibernate version for better stability. ([1e0a99c](https://example.com))
+- **Documentation Update**: Revised README to reflect the latest branch versions. ([1384c38](https://example.com))
+
+---
+
+Full Changelog: [v0.2.1...v0.2.2](https://example.com)
+
+**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.2.1...0.2.2

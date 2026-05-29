@@ -153,7 +153,6 @@ public abstract class AbstractHibernateH2Test extends AbstractHibernateTest {
                 UserProfile profile = user1.getProfile();
                 assertEquals(profile, user.getProfile());
 
-
             });
         }
 
@@ -352,6 +351,5 @@ public abstract class AbstractHibernateH2Test extends AbstractHibernateTest {
             });
         }
     }
-
 
 }

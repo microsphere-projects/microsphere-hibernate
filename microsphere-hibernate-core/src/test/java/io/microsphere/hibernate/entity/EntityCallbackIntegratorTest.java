@@ -17,7 +17,6 @@
 
 package io.microsphere.hibernate.entity;
 
-
 import io.microsphere.hibernate.test.AbstractHibernateH2Test;
 
 /**
