@@ -80,4 +80,21 @@
 
 Full Changelog: [v0.2.1...v0.2.2](https://example.com)
 
-**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.2.1...0.2.2
+**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.2.1...0.2.2## v0.2.3
+
+# Release Notes: Version 0.2.3
+
+## Bug Fixes
+- **Code Cleanup**: Removed duplicated line separators and trailing whitespace. ([#17](https://github.com/microsphere-projects/copilot/pull/17))
+
+## Dependency Updates
+- Bumped `microsphere-spring-cloud` to version `0.2.14`.
+
+## Documentation
+- Updated README with latest branch versions. ([95c95e3](https://github.com/microsphere-projects/copilot/commit/95c95e3))
+
+## Other Changes
+- Version bumped post-release of `0.2.2`. ([4545ac6](https://github.com/microsphere-projects/copilot/commit/4545ac6))
+- Merged `main` into `release`. [skip ci] 
+
+**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.2.2...0.2.3
