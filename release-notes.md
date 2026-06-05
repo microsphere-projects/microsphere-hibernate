@@ -97,4 +97,21 @@ Full Changelog: [v0.2.1...v0.2.2](https://example.com)
 - Version bumped post-release of `0.2.2`. ([4545ac6](https://github.com/microsphere-projects/copilot/commit/4545ac6))
 - Merged `main` into `release`. [skip ci] 
 
-**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.2.2...0.2.3
+**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.2.2...0.2.3## v0.2.4
+
+# Release Notes for Version 0.2.4
+
+## Dependency Updates
+- Updated `microsphere-spring-cloud` to `0.2.15`. ([e29c458](#))
+
+## Documentation
+- Updated branch version details in `README`. ([f3b5096](#))
+
+## Test Improvements
+- Replaced implicit assertions with explicit JUnit assertions.
+- Fixed Javadoc parameter inconsistencies. ([921b38d](#))
+
+## Other Changes
+- Routine version bump and branch merges. ([3ccdd87](#), [f9fa7ab](#), [2267985](#), [0939a98](#)) 
+
+**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.2.3...0.2.4
