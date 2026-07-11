@@ -20,13 +20,6 @@
 
     <dependencies>
 
-        <!-- Microsphere Java Core -->
-        <dependency>
-            <groupId>io.github.microsphere-projects</groupId>
-            <artifactId>microsphere-java-core</artifactId>
-            <optional>true</optional>
-        </dependency>
-
         <!-- Microsphere Annotation Processor -->
         <dependency>
             <groupId>io.github.microsphere-projects</groupId>
@@ -34,10 +27,18 @@
             <optional>true</optional>
         </dependency>
 
+        <!-- Microsphere Java Core -->
+        <dependency>
+            <groupId>io.github.microsphere-projects</groupId>
+            <artifactId>microsphere-java-core</artifactId>
+            <optional>true</optional>
+        </dependency>
+
         <!-- Microsphere Java Test -->
         <dependency>
             <groupId>io.github.microsphere-projects</groupId>
             <artifactId>microsphere-java-test</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <!-- Hibernate -->
