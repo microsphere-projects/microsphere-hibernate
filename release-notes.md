@@ -147,4 +147,20 @@ Full Changelog: [v0.2.1...v0.2.2](https://example.com)
 
 ---
 
-**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.2.5...0.2.6
+**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.2.5...0.2.6## v0.2.7
+
+# Release Notes: Version 0.2.7  
+
+## Bug Fixes  
+- Fixed optional dependency flags in module POMs.  
+
+## Dependency Updates  
+- Bumped Spring Cloud parent to version `0.2.23`.  
+
+## Other Changes  
+- Simplified `HibernateRuntime` annotation imports.  
+- Updated branch version numbers post-release.  
+
+---
+
+**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.2.6...0.2.7
