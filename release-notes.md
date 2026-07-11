@@ -130,4 +130,21 @@ Full Changelog: [v0.2.1...v0.2.2](https://example.com)
 
 ---
 
-**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.2.4...0.2.5
+**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.2.4...0.2.5## v0.2.6
+
+# Release Notes - Version 0.2.6
+
+## Dependency Updates
+- Bumped **Microsphere Spring Cloud** to `0.2.21`. (#76079e5)
+
+## Documentation
+- Updated README to reflect current branch version numbers. (#6bdcc82)
+
+## Build and Workflow Enhancements
+- Merged `main` into `release`. [skip ci] (#735de0e, #63b35bf)
+- Merged `release` into `main`. [skip ci] (#857e249)
+- Bumped version to next patch after publishing `0.2.5`. (#d1c5d2b)
+
+---
+
+**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.2.5...0.2.6
