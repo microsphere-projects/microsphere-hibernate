@@ -163,4 +163,18 @@ Full Changelog: [v0.2.1...v0.2.2](https://example.com)
 
 ---
 
-**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.2.6...0.2.7
+**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.2.6...0.2.7## v0.2.8
+
+# Release Notes - Version 0.2.8
+
+## Dependency Updates
+- Relaxed core dependency requirements and bumped parent version. ([a075188](https://example.com/commit/a075188))
+
+## Documentation
+- Updated `README` to reflect latest branch versions. ([eb1d16a](https://example.com/commit/eb1d16a))
+
+## Build and Workflow Enhancements
+- Merged `main` into `release` and vice versa to sync changes. ([7187ef8](https://example.com/commit/7187ef8), [4edaaed](https://example.com/commit/4edaaed))
+- Bumped version to prepare for the next patch release. ([1e821dd](https://example.com/commit/1e821dd))
+
+**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.2.7...0.2.8
