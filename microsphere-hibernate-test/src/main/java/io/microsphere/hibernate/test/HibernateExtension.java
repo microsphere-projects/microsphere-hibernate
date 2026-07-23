@@ -40,6 +40,8 @@ import java.lang.reflect.Modifier;
 import java.util.Optional;
 import java.util.Set;
 
+import static io.microsphere.logging.LoggerFactory.getLogger;
+
 /**
  * JUnit Jupiter extension that manages the Hibernate lifecycle for test classes annotated
  * with {@link HibernateTest}.
@@ -67,7 +69,7 @@ import java.util.Set;
 public class HibernateExtension implements BeforeAllCallback, BeforeEachCallback,
         AfterEachCallback, AfterAllCallback, ParameterResolver {
 
-    private static final Logger logger = LoggerFactory.getLogger(HibernateExtension.class);
+    private static final Logger logger = getLogger(HibernateExtension.class);
 
     private static final Namespace NAMESPACE = Namespace.create(HibernateExtension.class);
 
