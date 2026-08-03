@@ -177,4 +177,18 @@ Full Changelog: [v0.2.1...v0.2.2](https://example.com)
 - Merged `main` into `release` and vice versa to sync changes. ([7187ef8](https://example.com/commit/7187ef8), [4edaaed](https://example.com/commit/4edaaed))
 - Bumped version to prepare for the next patch release. ([1e821dd](https://example.com/commit/1e821dd))
 
-**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.2.7...0.2.8
+**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.2.7...0.2.8## v0.2.9
+
+_Release notes generation failed. Raw commits since 0.2.8:_
+
+```
+5245d44 Update version numbers in README.md
+c752f07 chore: merge main into release [skip ci]
+f1c2cb0 Bump microsphere-spring-cloud to 0.2.25
+e3545fa chore: merge main into release [skip ci]
+ca3ac93 Use static getLogger in HibernateExtension
+225bbf4 chore: merge release into main [skip ci]
+81b2056 chore: bump version to next patch after publishing 0.2.8
+```
+
+**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.2.8...0.2.9
