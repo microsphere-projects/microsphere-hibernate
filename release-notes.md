@@ -204,4 +204,16 @@ Thank you for using version 0.1.0! Stay tuned for future updates.
 
 For detailed changes, refer to the [Full Changelog](#).
 
-**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.1.7...0.1.8
+**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.1.7...0.1.8## v0.1.9
+
+_Release notes generation failed. Raw commits since 0.1.8:_
+
+```
+c6ea3de Update version numbers in README.md
+a3fcce9 Merge pull request #43 from mercyblitz/dev-1.x
+8db1f89 Bump microsphere-spring-cloud to 0.1.25
+afe938e chore: merge release-1.x into dev-1.x [skip ci]
+e7fc85a chore: bump version to next patch after publishing 0.1.8
+```
+
+**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.1.8...0.1.9
