@@ -216,4 +216,17 @@ afe938e chore: merge release-1.x into dev-1.x [skip ci]
 e7fc85a chore: bump version to next patch after publishing 0.1.8
 ```
 
-**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.1.8...0.1.9
+**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.1.8...0.1.9## v0.1.10
+
+_Release notes generation failed. Raw commits since 0.1.9:_
+
+```
+8f168ed Update version numbers in README.md
+93f9453 Merge pull request #46 from mercyblitz/dev-1.x
+406d435 Merge branch 'microsphere-projects:dev-1.x' into dev-1.x
+e57a5a2 Bump Microsphere Spring Cloud to 0.1.26
+7c53693 chore: merge release-1.x into dev-1.x [skip ci]
+8474ea4 chore: bump version to next patch after publishing 0.1.9
+```
+
+**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.1.9...0.1.10
