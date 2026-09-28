@@ -191,4 +191,19 @@ ca3ac93 Use static getLogger in HibernateExtension
 81b2056 chore: bump version to next patch after publishing 0.2.8
 ```
 
-**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.2.8...0.2.9
+**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.2.8...0.2.9## v0.2.10
+
+_Release notes generation failed. Raw commits since 0.2.9:_
+
+```
+f835705 Update version numbers in README.md
+bcfea80 chore: merge main into release [skip ci]
+167c3d8 Bump microsphere-spring-cloud to 0.2.26
+93ab997 chore: merge main into release [skip ci]
+dfe5022 Merge pull request #44 from microsphere-projects/dependabot/maven/org.apache.maven-apache-maven-3.9.16
+8272def Bump org.apache.maven:apache-maven from 3.9.15 to 3.9.16
+575ee9d chore: merge release into main [skip ci]
+58a5d2b chore: bump version to next patch after publishing 0.2.9
+```
+
+**Full Changelog**: https://github.com/microsphere-projects/microsphere-hibernate/compare/0.2.9...0.2.10
