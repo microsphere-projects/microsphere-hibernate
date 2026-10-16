@@ -102,9 +102,26 @@ We welcome your contributions! Please read [Code of Conduct](./CODE_OF_CONDUCT.m
 
 ## Documentation
 
+Documentation lives in the [`docs/`](docs/README.md) directory, organized by release branch line
+(`current` for the `release` branch, `1.x` for the `release-1.x` branch). English is the default language;
+Chinese versions live in parallel `zh/` directories with identical filenames.
+
+- Documentation Index · [中文文档索引](docs/zh/README.md)
+
 ### User Guide
 
-[DeepWiki Host](https://deepwiki.com/microsphere-projects/microsphere-hibernate)
+- Current (0.2.x, Hibernate 6.2–7.3): [docs/current/user-guide](docs/current/user-guide/README.md) ·
+  [中文](docs/current/user-guide/zh/README.md)
+- 1.x (0.1.x, Hibernate 5.0–5.6): [docs/1.x/user-guide](docs/1.x/user-guide/README.md) ·
+  [中文](docs/1.x/user-guide/zh/README.md)
+- [DeepWiki Host](https://deepwiki.com/microsphere-projects/microsphere-hibernate)
+
+### Developer Guide
+
+- Current (0.2.x, Hibernate 6.2–7.3): [docs/current/developer-guide](docs/current/developer-guide/README.md) ·
+  [中文](docs/current/developer-guide/zh/README.md)
+- 1.x (0.1.x, Hibernate 5.0–5.6): [docs/1.x/developer-guide](docs/1.x/developer-guide/README.md) ·
+  [中文](docs/1.x/developer-guide/zh/README.md)
 
 ### Wiki
 
