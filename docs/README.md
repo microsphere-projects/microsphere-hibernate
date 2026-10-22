@@ -2,7 +2,9 @@
 
 This directory hosts the bilingual documentation for [Microsphere Hibernate](../README.md), organized by
 **release branch line** and then by **guide type**. English is the default language; the Chinese version of every
-document lives in a parallel `zh/` subdirectory with the same filename.
+guide document lives in a parallel `zh/` subdirectory with the same filename. The tag-to-tag source comparisons under
+[`diff/source/`](diff/source/) use the opposite layout: the Chinese document is at the primary path and the English
+version is the `-en.md` sibling.
 
 ## Documentation Structure
 
@@ -13,9 +15,11 @@ docs/
 ├── current/                  # release branch     — 0.2.x line (Hibernate 6.2–7.3, JDK 17+)
 │   ├── user-guide/           # User Guide (English) + zh/ (Chinese)
 │   └── developer-guide/      # Developer Guide (English) + zh/ (Chinese)
-└── 1.x/                      # release-1.x branch — 0.1.x line (Hibernate 5.0–5.6, JDK 8+)
-    ├── user-guide/           # User Guide (English) + zh/ (Chinese)
-    └── developer-guide/      # Developer Guide (English) + zh/ (Chinese)
+├── 1.x/                      # release-1.x branch — 0.1.x line (Hibernate 5.0–5.6, JDK 8+)
+│   ├── user-guide/           # User Guide (English) + zh/ (Chinese)
+│   └── developer-guide/      # Developer Guide (English) + zh/ (Chinese)
+└── diff/source/              # Tag-to-tag source comparisons (Chinese at the primary path,
+                              # English as the `-en.md` sibling)
 ```
 
 ## Version Lines
@@ -54,6 +58,17 @@ Each guide contains one document per Maven module:
 
 Replace `current/user-guide` with `current/developer-guide`, `1.x/user-guide`, or `1.x/developer-guide`
 (or their `zh/` counterparts) to read the same module in another guide, branch line, or language.
+
+## Tag Source Diffs
+
+Side-by-side comparisons of the two most recent tags, module by module, with `src/main` and `src/test` documented
+separately. Java 8 vs Java 17+ syntax/API differences and Java EE (`javax.*`) vs Jakarta EE (`jakarta.*`) differences
+are filtered out, so only substantive implementation deltas remain.
+
+| Comparison | Scope | Documents |
+|------------|-------|-----------|
+| `0.2.10` vs `0.1.10` | `src/main` | [中文](diff/source/main-diff-0.2.10-vs-0.1.10.md) · [English](diff/source/main-diff-0.2.10-vs-0.1.10-en.md) |
+| `0.2.10` vs `0.1.10` | `src/test` | [中文](diff/source/test-diff-0.2.10-vs-0.1.10.md) · [English](diff/source/test-diff-0.2.10-vs-0.1.10-en.md) |
 
 ## Other Documentation
 
